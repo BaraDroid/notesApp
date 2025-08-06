@@ -1,0 +1,20 @@
+Handy Ansicht:
+    flex-direction: column
+
+Titel als input-Feld, content als text-area
+Speichern und Löschen erzeugen Toastnachricht, falls Notiz leer
+Speichern bestehender Nachricht auch ohne Veränderungen schiebt sie nach vorne
+Notizenkarten chronologisch geordnet, die jüngste am obersten
+Was zu lang ist für die Karte - abgehackt, ersetzt durch drei Punkte
+es rechnet mit Zeichen - falls mehr, als eine (kurze) Zeile vorhanden, wird die zweite Zeile draufgeklebt - bis zu dem Punkt, wo ... kommen soll
+Bei Neuöffnung ist die Formatierung von vorher
+Alle Notizen und ihre Aktualisierungen werden in LS gespeichert
+Löschen einer Notiz öffnet leere Notiz
+Neue Notiz - button öffnet leere Notiz
+Speichern einer Notiz öffnet leere Notiz
+Karte einer Notiz hat hover Effekt, welcher bleibt bestehen, falls Notiz ausgewählt
+lastUpdated ist ein timestamp mit datum und Uhrzeit bis in die Sekunden
+Änderung an der primary-color ändert auch hover Effekt
+        --primary-color: 246, 93, 231;
+    --primary-color-rgb: rgb(var(--primary-color));
+    --primary-color--hover: rgb(249, 126, 237);

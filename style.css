@@ -46,13 +46,14 @@ button {
   flex-direction: column;
   gap: 2rem;
   padding: 1rem;
-  width: fit-content;
+  width: 30dvw;
 }
 
 .add_new {
     background-color: var(--primary-color);
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 1rem;
   border-radius: 0.8rem;
 }

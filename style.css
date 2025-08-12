@@ -1,26 +1,141 @@
 :root {
-    --primary-color: #d95070;
-    --primary-color-rgb: rgb(var(--primary-color));
-    --primary-color--hover: color-mix(in oklab, var(--primary-color), white 64%);
-    --text-color: #111827;
+  --primary-color: #d95070;
+  --primary-color-rgb: rgb(var(--primary-color));
+  --primary-color--hover: color-mix(in oklab, var(--primary-color), white 64%);
+  --text-color-default: black;
+  --text-color-light: #95969b;
 }
 
 * {
-    position: relative;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    scroll-behavior: smooth;
-    color: var(--text-bold-dark);
-    font-family: 'Poppins';
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  color: var(--text-color-light);
+  font-family: "Poppins";
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./assets/Poppins/Poppins-Regular.ttf');
+  font-family: "Poppins";
+  src: url("./assets/Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-bold";
+  src: url("assets/Poppins/Poppins-Bold.ttf");
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
+      border: unset;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1220px;
+  height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  width: fit-content;
+}
+
+.add_new {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  border-radius: 0.8rem;
+}
+
+.btn_description {
+    font-family: 'Poppins-bold';
+    color: white;
+    font-size: 1rem;
+    text-wrap: nowrap;
+}
+
+.plus_icon {
+    height: 3rem;
+}
+
+.saved_notes {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.note_card {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.note_card:hover {
+  background-color: var(--primary-color--hover);
+}
+
+span:first-child {
+  color: black;
+  font-family: 'Poppins-bold';
+}
+
+.main_content {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--text-color-light);
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-height: 10dvh;
+}
+
+.note_title_input {
+  flex-grow: 1;
+  color: var(--text-color-default);
+  font-family: 'Poppins-bold';
+  font-size: 3rem;
+  border: unset;
+}
+
+.action_btns {
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  height: 100%;
+  aspect-ratio: 1/1;
+  margin-left: .5rem;
+}
+
+.icons {
+  height: 100%;
+  width: 100%;
+}
+
+.note_body_input {
+    flex-grow: 1;
+    font-size: 1.5rem;
+    color: var(--text-color-default);
+    border: unset;
+}
+
+.nofocus {
+    outline: none;
 }

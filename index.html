@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,44 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
-    
+    <div class="wrapper">
+        <aside class="sidebar">
+            <button class="add_new">
+                <img src="assets/plus-icon.png" class="plus_icon" alt="Ikone Plus im Kreis">
+                <span class="btn_description">Neue Notiz erstellen</span>
+            </button>
+            <div class="saved_notes">
+                <div class="note_card">
+                    <span class="note_title">My first saved Note</span>
+                    <span class="note_content">Content of the saved Note</span>
+                </div>
+                <div class="note_card">
+                    <span class="note_title">My first saved Note</span>
+                    <span class="note_content">Content of the saved Note</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main_content">
+            <header>
+                <input type="text" class="note_title_input nofocus" placeholder="Überschrift eingeben..." required>
+                <div>
+                    <button id="saveBtn" class="action_btns">
+                        <img src="assets/save-icon.png" class="icons" alt="Diskette Symbol">
+                    </button>
+                    <button id="deleteBtn" class="action_btns">
+                        <img src="assets/delete-icon.png" class="icons" alt="Abfalleimer">
+                    </button>
+                </div>
+            </header>
+
+            <body>
+                <textarea class="note_body_input nofocus" placeholder="Notiz erstellen" required></textarea>
+            </body>
+        </main>
+    </div>
 </body>
+
 </html>

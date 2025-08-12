@@ -15,6 +15,4 @@ Speichern einer Notiz öffnet leere Notiz
 Karte einer Notiz hat hover Effekt, welcher bleibt bestehen, falls Notiz ausgewählt
 lastUpdated ist ein timestamp mit datum und Uhrzeit bis in die Sekunden
 Änderung an der primary-color ändert auch hover Effekt
-        --primary-color: 246, 93, 231;
-    --primary-color-rgb: rgb(var(--primary-color));
-    --primary-color--hover: rgb(249, 126, 237);
+box-shadow in grey-scale

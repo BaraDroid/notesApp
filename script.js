@@ -45,3 +45,7 @@ function getTimestamp() {
 function validateNoteForm() {
     //gibt eine Toastmessage aus, falls ein required Field leer wird
 }
+
+function renderToastMessage() {
+    
+}

@@ -39,7 +39,6 @@ button {
 
 .wrapper {
   width: 100%;
-  max-width: 1220px;
   height: 100dvh;
   display: flex;
   flex-direction: row;
@@ -51,9 +50,11 @@ button {
   gap: 2rem;
   padding: 1rem;
   width: 80dvw;
+  max-width: 1000px;
   height: 100%;
   overflow-x: auto;
 }
+
 ::-webkit-scrollbar {
   width: .5rem;
 }
@@ -170,4 +171,36 @@ header {
 
 .nofocus {
     outline: none;
+}
+
+#alert {
+  position: absolute;
+  z-index: 150;
+  background-color: white;
+  top: 1.5rem;
+  right: 0;
+  left: 0;
+  width: fit-content;
+  margin: auto;
+  padding: 1rem;
+  flex-direction: row;
+}
+
+#alert div {
+  display: flex;
+  flex-direction: column;
+}
+
+#toast_message {
+  font-family: "Poppins";
+  color: var(--text-color-light)
+}
+
+.dismiss_btn {
+  padding: 3px;
+  height: fit-content;
+  font-family: 'Poppins-bold';
+  border-radius: 5px;
+  margin-left: 8px;
+  background-color: var(--primary-color--hover)
 }

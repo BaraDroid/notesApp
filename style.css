@@ -157,6 +157,10 @@ header {
   margin-left: .5rem;
 }
 
+.action_btn:hover {
+  background-color: var(--primary-color--hover);
+}
+
 .icons {
   height: 100%;
   width: 100%;
@@ -184,6 +188,7 @@ header {
   margin: auto;
   padding: 1rem;
   flex-direction: row;
+  cursor: default;
 }
 
 #alert div {
@@ -199,8 +204,19 @@ header {
 .dismiss_btn {
   padding: 3px;
   height: fit-content;
+  width: fit-content;
+  aspect-ratio: 3 / 1;
   font-family: 'Poppins-bold';
   border-radius: 5px;
   margin-left: 8px;
-  background-color: var(--primary-color--hover)
+  background-color: var(--primary-color--hover);
+  border: 1px solid var(--primary-color--hover);
+}
+
+.dismiss_btn:hover {
+  border: 1px solid var(--primary-color);
+}
+
+.hidden {
+  display: none;
 }

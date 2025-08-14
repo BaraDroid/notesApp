@@ -17,7 +17,7 @@
                 <img src="assets/plus-icon.png" class="plus_icon" alt="Ikone Plus im Kreis">
                 <span class="btn_description">Neue Notiz erstellen</span>
             </button>
-            <div class="saved_notes">
+            <div class="saved_notes" id="savedNotes">
                 <div class="note_card">
                     <span class="note_title">My first saved Note</span>
                     <span class="note_content">Content of the saved Note</span>
@@ -31,26 +31,26 @@
                 <input type="text" class="note_title_input nofocus" id="noteTitle" placeholder="Überschrift eingeben..."
                     required>
                 <div class="action_btns">
-                    <button id="saveBtn" class="action_btn">
+                    <button id="saveBtn" role="save note" class="action_btn" onclick="saveNote()">
                         <img src="assets/save-icon.png" class="icons" alt="Diskette Symbol">
                     </button>
-                    <button id="deleteBtn" class="action_btn">
+                    <button id="deleteBtn" role="delete note" class="action_btn">
                         <img src="assets/delete-icon.png" class="icons" alt="Abfalleimer">
                     </button>
                 </div>
             </header>
-
+<button onclick="renderSavedNotes()">show saved notes</button>
             <body>
                 <textarea class="note_body_input nofocus" placeholder="Notiz erstellen" id="noteContent"
                     required></textarea>
             </body>
         </main>
-        <div class="note_card" id="alert">
+        <div class="note_card hidden" id="alert">
             <div>
                 <span id="toast_message">Notiz kann nicht gespeichert werden</span>
                 <span id="toast_message">Bitte Titel und Inhalt eingeben</span>
             </div>
-            <button class="dismiss_btn">X</button>
+            <button class="dismiss_btn">x</button>
         </div>
     </div>
 </body>

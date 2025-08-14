@@ -1,51 +1,81 @@
-const noteTitle = document.getElementById('noteTitle').value;
-const noteContent = document.getElementById('noteContent').value;
+let savedNotes = [];
 
-const myNote = {
-    noticeTitle: noteTitle,
-    noticeBody: noteContent,
-    lastUpdated: 'timestamp',
-    id: ''
+function saveNote() {
+    renderNoteCard(getData());
+    clearInputField();
 }
 
-let savedNotes = []; //das macht ja LS für mich, das kann ich löschen
+function getData() {
+  const noteTitle = document.getElementById("noteTitle").value;
+  const noteContent = document.getElementById("noteContent").value;
+
+  const myNote = {
+    noteTitle: noteTitle,
+    noteBody: noteContent,
+    lastUpdated: new Date().toLocaleString(),
+    id: "",
+  };
+  return myNote;
+}
+
+
 
 function renderSavedNotes() {
-//für jeder item aus savedNotes eine Karte rendern
+  //für jeder item aus savedNotes eine Karte rendern
+  let currentSavedNotes = getNotesFromLS();
+  console.log(currentSavedNotes);   //a tady je to array, takze ho jen durchloopnu - 
+  currentSavedNotes.forEach(note => renderNoteCard(note));
 }
 
-function renderNoteCard() {
+function renderNoteCard(oneNote) {
+    const notesContainer = document.getElementById("savedNotes");
+    const noteCard = document.createElement("div");
+    noteCard.classList.add("note_card");
+    const title = document.createElement("span");
+    title.classList.add("note_title");
+    title.innerText = oneNote.noteTitle;
+    const noteContent = document.createElement("span");
+    noteContent.classList.add("note_content");
+    noteContent.innerText = oneNote.noteBody;
+    const noteUpdate = document.createElement("span");
+    noteUpdate.classList.add("created_at");
+    noteUpdate.innerText = oneNote.lastUpdated;
 
+    notesContainer.appendChild(noteCard);
+    noteCard.appendChild(title);
+    noteCard.appendChild(noteContent);
+    noteCard.appendChild(noteUpdate);
+
+    saveNoteInLS(oneNote);
 }
 
-function saveNoteInLS() {
-
+function clearInputField() {
+    document.getElementById("noteTitle").value = '';
+    document.getElementById("noteContent").value = '';
 }
 
-function getNoteFromLS() {
+function saveNoteInLS(note) {
+    savedNotes.push(note);
+    localStorage.setItem('savedNotes', JSON.stringify(savedNotes));
+}
 
+function getNotesFromLS() {
+    let savedNotes = JSON.parse(localStorage.getItem('savedNotes'));
+    return savedNotes;
 }
 
 function deleteNote() {
-    //hier wird auch aus LS deleted, gehört ja zusammen
+  //hier wird auch aus LS deleted, gehört ja zusammen
 }
 
-function editNote() {
+function editNote() {}
 
-}
+function saveEditedNote() {}
 
-function saveEditedNote() {
-
-}
-
-function getTimestamp() {
-
-}
+function getTimestamp() {}
 
 function validateNoteForm() {
-    //gibt eine Toastmessage aus, falls ein required Field leer wird
+  //gibt eine Toastmessage aus, falls ein required Field leer wird
 }
 
-function renderToastMessage() {
-    
-}
+function renderToastMessage() {}

@@ -105,17 +105,27 @@ button:hover {
   padding: 2rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 0.8rem;
-  cursor: pointer;
   transition: all 0.255s ease-in-out;
 }
 
-.note_card:hover {
+.note_card:not(.note_selected) {
+  cursor: pointer;
+}
+
+.note_card:hover, .note_selected {
   background-color: var(--primary-color--hover);
 }
 
 span:first-child {
   color: black;
   font-family: 'Poppins-bold';
+}
+
+.note_title, .note_content {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .created_at {
@@ -207,19 +217,20 @@ header {
 }
 
 .dismiss_btn {
-  padding: 3px;
+  padding: 1.5px;
   height: fit-content;
   width: fit-content;
   aspect-ratio: 3 / 1;
   font-family: 'Poppins-bold';
   border-radius: 5px;
   margin-left: 8px;
-  background-color: var(--primary-color--hover);
-  border: 1px solid var(--primary-color--hover);
+  background-color: var(--primary-color--hover) !important;
+  border: 2px solid var(--primary-color--hover);
+  color: var(--text-color-default);
 }
 
 .dismiss_btn:hover {
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .hidden {

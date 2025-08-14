@@ -1,7 +1,7 @@
 :root {
   --primary-color: #d95070;
-  --primary-color-rgb: rgb(var(--primary-color));
   --primary-color--hover: color-mix(in oklab, var(--primary-color), white 64%);
+  --btns--hover: color-mix(in oklab, var(--primary-color), white 34%);
   --text-color-default: black;
   --text-color-light: #95969b;
 }
@@ -34,7 +34,12 @@
 
 button {
   cursor: pointer;
-      border: unset;
+  border: unset;
+  transition: all 0.255s ease-in-out;
+}
+
+button:hover {
+  background-color:var(--btns--hover);
 }
 
 .wrapper {
@@ -101,6 +106,7 @@ button {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 0.8rem;
   cursor: pointer;
+  transition: all 0.255s ease-in-out;
 }
 
 .note_card:hover {
@@ -155,10 +161,6 @@ header {
   height: 100%;
   aspect-ratio: 1/1;
   margin-left: .5rem;
-}
-
-.action_btn:hover {
-  background-color: var(--primary-color--hover);
 }
 
 .icons {

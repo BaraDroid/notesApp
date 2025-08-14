@@ -169,8 +169,11 @@ header {
 .note_body_input {
     flex-grow: 1;
     font-size: 1.5rem;
-    color: var(--text-color-default);
+    color: var(--text-color-light);
     border: unset;
+    resize: none;
+    width: 100%;
+    height: 100%;
 }
 
 .nofocus {

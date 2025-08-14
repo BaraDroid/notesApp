@@ -1,5 +1,7 @@
 let savedNotes = [];
 
+window.addEventListener('load', renderSavedNotes);
+
 function saveNote() {
     renderNoteCard(getData());
     clearInputField();
@@ -18,12 +20,8 @@ function getData() {
   return myNote;
 }
 
-
-
 function renderSavedNotes() {
-  //für jeder item aus savedNotes eine Karte rendern
   let currentSavedNotes = getNotesFromLS();
-  console.log(currentSavedNotes);   //a tady je to array, takze ho jen durchloopnu - 
   currentSavedNotes.forEach(note => renderNoteCard(note));
 }
 
@@ -68,7 +66,13 @@ function deleteNote() {
   //hier wird auch aus LS deleted, gehört ja zusammen
 }
 
-function editNote() {}
+function editNote(noteId) {
+    const savedNote = {
+        savedNoteTitle: '',
+        savedNoteContent: ''
+    }
+    
+}
 
 function saveEditedNote() {}
 

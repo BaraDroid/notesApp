@@ -1,10 +1,23 @@
 let savedNotes = [];
+const notesContainer = document.getElementById("savedNotesContentRef");
 
 window.addEventListener('load', renderSavedNotes);
 
 function saveNote() {
-    renderNoteCard(getData());
+    getData();
+    let sortedNotes = savedNotes.reverse();
+    notesContainer.innerHTML = '';
+    sortedNotes.forEach((note) => {getNoteCardTemplate(note)});
+    savedNotes = sortedNotes.reverse();
     clearInputField();
+    saveNotesInLS();
+}
+
+function renderSavedNotes() {
+  notesContainer.innerHTML = '';
+  let currentSavedNotes = getNotesFromLS();
+  let sortedSavedNotes = currentSavedNotes.reverse();
+  sortedSavedNotes.forEach(note => getNoteCardTemplate(note));
 }
 
 function getData() {
@@ -17,16 +30,10 @@ function getData() {
     lastUpdated: new Date().toLocaleString(),
     id: "",
   };
-  return myNote;
+  savedNotes.push(myNote);
 }
 
-function renderSavedNotes() {
-  let currentSavedNotes = getNotesFromLS();
-  currentSavedNotes.forEach(note => renderNoteCard(note));
-}
-
-function renderNoteCard(oneNote) {
-    const notesContainer = document.getElementById("savedNotes");
+function getNoteCardTemplate(oneNote) {
     const noteCard = document.createElement("div");
     noteCard.classList.add("note_card");
     const title = document.createElement("span");
@@ -43,17 +50,18 @@ function renderNoteCard(oneNote) {
     noteCard.appendChild(title);
     noteCard.appendChild(noteContent);
     noteCard.appendChild(noteUpdate);
-
-    saveNoteInLS(oneNote);
 }
+
+
+
+
 
 function clearInputField() {
     document.getElementById("noteTitle").value = '';
     document.getElementById("noteContent").value = '';
 }
 
-function saveNoteInLS(note) {
-    savedNotes.push(note);
+function saveNotesInLS() {
     localStorage.setItem('savedNotes', JSON.stringify(savedNotes));
 }
 
@@ -71,7 +79,7 @@ function editNote(noteId) {
         savedNoteTitle: '',
         savedNoteContent: ''
     }
-    
+
 }
 
 function saveEditedNote() {}

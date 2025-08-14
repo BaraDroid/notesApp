@@ -27,6 +27,11 @@
   src: url("assets/Poppins/Poppins-Bold.ttf");
 }
 
+@font-face {
+  font-family: "Poppins-italic";
+  src: url("assets/Poppins/Poppins-Italic.ttf");
+}
+
 button {
   cursor: pointer;
       border: unset;
@@ -104,6 +109,15 @@ button {
 span:first-child {
   color: black;
   font-family: 'Poppins-bold';
+}
+
+.created_at {
+  color: var(--text-color-light);
+  position: absolute;
+  bottom: .25rem;
+  right: 1rem;
+  font-family: 'Poppins-italic';
+  font-size: 1rem;
 }
 
 .main_content {

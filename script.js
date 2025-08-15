@@ -79,7 +79,18 @@ function getNotesFromLS() {
 }
 
 function deleteNote() {
-  //hier wird auch aus LS deleted, gehört ja zusammen
+    const noteToDelete = document.querySelector(".note_selected");
+    noteToDelete.remove();
+    const noteToDeleteTitle = titleInputField.value;
+    updateLS(noteToDeleteTitle);
+    console.log(noteToDeleteTitle);
+    clearInputField();
+}
+
+function updateLS(title) {
+    let updatedArray = savedNotes.filter(note => note.noteTitle !== title);
+    savedNotes = updatedArray;
+    saveNotesInLS();
 }
 
 function editNote(noteToEdit, clickedCard) {

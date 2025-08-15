@@ -1,5 +1,7 @@
 let savedNotes = [];
 const notesContainer = document.getElementById("savedNotesContentRef");
+const titleInputField = document.getElementById("noteTitle");
+const contentInputField = document.getElementById("noteContent");
 
 window.addEventListener("load", renderSavedNotes);
 
@@ -26,14 +28,14 @@ function renderSavedNotes() {
 }
 
 function getData() {
-  const noteTitle = document.getElementById("noteTitle").value;
-  const noteContent = document.getElementById("noteContent").value;
+  const noteTitle = titleInputField.value;
+  const noteContent = contentInputField.value;
 
   const myNote = {
     noteTitle: noteTitle,
     noteBody: noteContent,
     lastUpdated: new Date().toLocaleString(),
-    id: "",
+    id: Math.random(),
   };
   savedNotes.push(myNote);
 }
@@ -41,6 +43,7 @@ function getData() {
 function getNoteCardTemplate(oneNote) {
   const noteCard = document.createElement("div");
   noteCard.classList.add("note_card");
+  noteCard.addEventListener('click', () => {editNote(oneNote, noteCard)});
   const title = document.createElement("span");
   title.classList.add("note_title");
   title.innerText = oneNote.noteTitle;
@@ -58,8 +61,8 @@ function getNoteCardTemplate(oneNote) {
 }
 
 function clearInputField() {
-  document.getElementById("noteTitle").value = "";
-  document.getElementById("noteContent").value = "";
+  titleInputField.value = "";
+  contentInputField.value = "";
 }
 
 function saveNotesInLS() {
@@ -79,16 +82,14 @@ function deleteNote() {
   //hier wird auch aus LS deleted, gehört ja zusammen
 }
 
-function editNote(noteId) {
-  const savedNote = {
-    savedNoteTitle: "",
-    savedNoteContent: "",
-  };
+function editNote(noteToEdit, clickedCard) {
+    clickedCard.classList.add("note_selected");
+    titleInputField.value = noteToEdit.noteTitle;
+    contentInputField.value = noteToEdit.noteBody;
+    noteToEdit.lastUpdated = new Date().toLocaleString(); 
+    let newArray = savedNotes.filter(note => note.id !== noteToEdit.id);
+    savedNotes = newArray;
 }
-
-function saveEditedNote() {}
-
-function getTimestamp() {}
 
 function validateNoteForm() {
   //gibt eine Toastmessage aus, falls ein required Field leer wird

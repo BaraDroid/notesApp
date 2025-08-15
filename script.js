@@ -30,7 +30,7 @@ function renderSavedNotes() {
 function getData() {
   const noteTitle = titleInputField.value;
   const noteContent = contentInputField.value;
-
+      validateNote(noteTitle, noteContent);
   const myNote = {
     noteTitle: noteTitle,
     noteBody: noteContent,
@@ -102,8 +102,12 @@ function editNote(noteToEdit, clickedCard) {
     savedNotes = newArray;
 }
 
-function validateNoteForm() {
-  //gibt eine Toastmessage aus, falls ein required Field leer wird
+function validateNote(title, content) {
+  if(title || content === '') {
+    renderToastMessage();
+  }
 }
 
-function renderToastMessage() {}
+function renderToastMessage() {
+    
+}

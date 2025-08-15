@@ -2,6 +2,7 @@ let savedNotes = [];
 const notesContainer = document.getElementById("savedNotesContentRef");
 const titleInputField = document.getElementById("noteTitle");
 const contentInputField = document.getElementById("noteContent");
+const alertMessage = document.getElementById('alert');
 
 window.addEventListener("load", renderSavedNotes);
 
@@ -103,11 +104,20 @@ function editNote(noteToEdit, clickedCard) {
 }
 
 function validateNote(title, content) {
-  if(title || content === '') {
+  if(title === '' || content === '') {
     renderToastMessage();
   }
 }
 
 function renderToastMessage() {
+alertMessage.classList.remove('hidden');
+setTimeout(() => {
+    dismissAlert();
+}, 3000);
+}
+
+function dismissAlert() {
+    console.log('ich bin alert');
     
+    alertMessage.classList.add('hidden');
 }

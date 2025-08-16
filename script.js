@@ -31,7 +31,10 @@ function renderSavedNotes() {
 function getData() {
   const noteTitle = titleInputField.value;
   const noteContent = contentInputField.value;
-      validateNote(noteTitle, noteContent);
+  if(noteTitle === '' || noteContent === '') {
+    renderToastMessage();
+    return;
+  }
   const myNote = {
     noteTitle: noteTitle,
     noteBody: noteContent,
@@ -104,9 +107,7 @@ function editNote(noteToEdit, clickedCard) {
 }
 
 function validateNote(title, content) {
-  if(title === '' || content === '') {
-    renderToastMessage();
-  }
+
 }
 
 function renderToastMessage() {

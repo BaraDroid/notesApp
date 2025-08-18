@@ -1,4 +1,5 @@
 let savedNotes = [];
+let clickedCards = [];
 const notesContainer = document.getElementById("savedNotesContentRef");
 const titleInputField = document.getElementById("noteTitle");
 const contentInputField = document.getElementById("noteContent");
@@ -98,16 +99,14 @@ function updateLS(title) {
 }
 
 function editNote(noteToEdit, clickedCard) {
+    document.querySelectorAll('.note_card').forEach(card => card.classList.remove('note_selected'));
     clickedCard.classList.add("note_selected");
     titleInputField.value = noteToEdit.noteTitle;
     contentInputField.value = noteToEdit.noteBody;
     noteToEdit.lastUpdated = new Date().toLocaleString(); 
+    console.log('noteToEdit ID', noteToEdit.id);
     let newArray = savedNotes.filter(note => note.id !== noteToEdit.id);
     savedNotes = newArray;
-}
-
-function validateNote(title, content) {
-
 }
 
 function renderToastMessage() {
@@ -118,7 +117,5 @@ setTimeout(() => {
 }
 
 function dismissAlert() {
-    console.log('ich bin alert');
-    
     alertMessage.classList.add('hidden');
 }

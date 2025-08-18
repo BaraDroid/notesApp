@@ -19,6 +19,22 @@ function saveNote() {
   saveNotesInLS();
 }
 
+function saveNoteWithoutChangingPosition() {
+    getData();
+    clearInputField();
+}
+
+function createNewNote() {
+  //nojo, ted se mi otevre nova, ale ta stara se ulozi jako bez obsahu
+  //tady fakt musim tu starou nejdriv ulozit! ok, to mam, ale to mi ji ulozi nahore, i kdyz tam neni zadna zmena
+  //to musim nejak osetrit, ze kdyz zadny zmeny, tak se nic nedeje
+  console.log('creating new note');
+  saveNoteWithoutChangingPosition();
+  saveNote();
+}
+
+
+
 function renderSavedNotes() {
   if (getNotesFromLS() !== null) {
     savedNotes = getNotesFromLS();

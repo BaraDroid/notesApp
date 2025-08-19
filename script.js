@@ -39,7 +39,7 @@ function saveNote() {
 
 function getData() {
   const noteTitle = titleInputField.value;
-  const noteContent = contentInputField.value;
+  let noteContent = contentInputField.value;  
   if (noteTitle === "" || noteContent === "") {
     renderToastMessage();
     return;
@@ -68,7 +68,6 @@ function editNote(noteToEdit, clickedCard) {
     contentInputField.value = noteToEdit.noteBody;
     noteToEdit.lastUpdated = new Date().toLocaleString();
   }
-  console.log("noteToEdit ID", noteToEdit.id);
   let newArray = savedNotes.filter((note) => note.id !== noteToEdit.id);
   savedNotes = newArray;
 }
@@ -78,7 +77,6 @@ function deleteNote() {
   noteToDelete.remove();
   const noteToDeleteTitle = titleInputField.value;
   updateLS(noteToDeleteTitle);
-  console.log(noteToDeleteTitle);
   clearInputField();
 }
 
@@ -103,7 +101,7 @@ function getNoteCardTemplate(oneNote) {
   title.innerText = oneNote.noteTitle;
   const noteContent = document.createElement("span");
   noteContent.classList.add("note_content");
-  noteContent.innerText = oneNote.noteBody;
+  noteContent.innerText = changeFormat(oneNote.noteBody);
   const noteUpdate = document.createElement("span");
   noteUpdate.classList.add("created_at");
   noteUpdate.innerText = oneNote.lastUpdated;
@@ -112,6 +110,11 @@ function getNoteCardTemplate(oneNote) {
   noteCard.appendChild(title);
   noteCard.appendChild(noteContent);
   noteCard.appendChild(noteUpdate);
+}
+
+function changeFormat(content) {
+  let formattedContent = content.replace(/\n/g, ' ');
+  return formattedContent.trim();
 }
 
 function clearInputField() {

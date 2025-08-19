@@ -123,8 +123,8 @@ span:first-child {
 
 .note_title, .note_content {
   width: 100%;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 

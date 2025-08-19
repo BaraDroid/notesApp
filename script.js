@@ -48,7 +48,7 @@ function getData() {
     noteTitle: noteTitle,
     noteBody: noteContent,
     lastUpdated: new Date().toLocaleString(),
-    id: Math.random(),
+    id: getCryptedId(),
   };
   savedNotes.push(myNote);
 }
@@ -147,4 +147,11 @@ function renderToastMessage() {
 
 function dismissAlert() {
   alertMessage.classList.add("hidden");
+}
+
+function getCryptedId() {
+  const idArray = new Uint8Array(2);
+  crypto.getRandomValues(idArray);
+  const secretID = Array.from(idArray, (num) => num.toString(16).padStart(2, '0')).join('');
+  return secretID;
 }

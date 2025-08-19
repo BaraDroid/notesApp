@@ -13,7 +13,7 @@
 <body>
     <div class="wrapper">
         <aside class="sidebar">
-            <button class="add_new" onclick="createNewNote()">
+            <button class="add_new">
                 <img src="assets/plus-icon.png" class="plus_icon" alt="Ikone Plus im Kreis">
                 <span class="btn_description">Neue Notiz erstellen</span>
             </button>
@@ -26,10 +26,10 @@
                 <input type="text" class="note_title_input nofocus" id="noteTitle" placeholder="Überschrift eingeben..."
                     required>
                 <div class="action_btns">
-                    <button id="saveBtn" role="save note" class="action_btn" onclick="saveNote()">
+                    <button id="saveBtn" role="save note" class="action_btn" onclick="">
                         <img src="assets/save-icon.png" class="icons" alt="Diskette Symbol">
                     </button>
-                    <button id="deleteBtn" role="delete note" class="action_btn" onclick="deleteNote()">
+                    <button id="deleteBtn" role="delete note" class="action_btn">
                         <img src="assets/delete-icon.png" class="icons" alt="Abfalleimer">
                     </button>
                 </div>
@@ -41,7 +41,7 @@
                 <span id="toast_message">Notiz kann nicht gespeichert werden</span>
                 <span id="toast_message">Bitte Titel und Inhalt eingeben</span>
             </div>
-            <button class="dismiss_btn" onclick="dismissAlert()">x</button>
+            <button class="dismiss_btn">x</button>
         </div>
     </div>
 </body>

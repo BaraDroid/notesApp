@@ -1,5 +1,4 @@
 let savedNotes = [];
-let clickedCards = [];
 const notesContainer = document.getElementById("savedNotesContentRef");
 const titleInputField = document.getElementById("noteTitle");
 const contentInputField = document.getElementById("noteContent");
@@ -19,19 +18,20 @@ function saveNote() {
   saveNotesInLS();
 }
 
-function saveNoteWithoutChangingPosition() {
-    getData();
-    clearInputField();
-}
 
 function createNewNote() {
   //nojo, ted se mi otevre nova, ale ta stara se ulozi jako bez obsahu
   //tady fakt musim tu starou nejdriv ulozit! ok, to mam, ale to mi ji ulozi nahore, i kdyz tam neni zadna zmena
   //to musim nejak osetrit, ze kdyz zadny zmeny, tak se nic nedeje
+    document.querySelectorAll('.note_card').forEach(card => card.classList.remove('note_selected'));
   console.log('creating new note');
-  saveNoteWithoutChangingPosition();
-  saveNote();
+  getData();
+  
+  renderSavedNotes();
+  clearInputField();
+  saveNotesInLS();
 }
+
 
 
 
@@ -117,9 +117,13 @@ function updateLS(title) {
 function editNote(noteToEdit, clickedCard) {
     document.querySelectorAll('.note_card').forEach(card => card.classList.remove('note_selected'));
     clickedCard.classList.add("note_selected");
+      if(titleInputField.value === noteToEdit.noteTitle && contentInputField.value === noteToEdit.noteBody) {
+    noteToEdit.lastUpdated = noteToEdit.lastUpdate;
+  } else {
     titleInputField.value = noteToEdit.noteTitle;
     contentInputField.value = noteToEdit.noteBody;
     noteToEdit.lastUpdated = new Date().toLocaleString(); 
+  }
     console.log('noteToEdit ID', noteToEdit.id);
     let newArray = savedNotes.filter(note => note.id !== noteToEdit.id);
     savedNotes = newArray;

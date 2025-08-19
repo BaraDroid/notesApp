@@ -19,7 +19,15 @@ function createNewNote() {
   document
     .querySelectorAll(".note_card")
     .forEach((card) => card.classList.remove("note_selected"));
-  getData();
+    const noteTitle = titleInputField.value;
+  let noteContent = contentInputField.value;  
+  const myNote = {
+    noteTitle: noteTitle,
+    noteBody: noteContent,
+    lastUpdated: new Date().toLocaleString(),
+    id: getCryptedId(),
+  };
+  savedNotes.push(myNote);
   renderSavedNotes();
   clearInputField();
   saveNotesInLS();
@@ -114,7 +122,7 @@ function getNoteCardTemplate(oneNote) {
 
 function changeFormat(content) {
   let formattedContent = content.replace(/\n/g, ' ');
-  return formattedContent.trim();
+  return formattedContent;
 }
 
 function clearInputField() {

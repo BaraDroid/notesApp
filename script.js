@@ -9,7 +9,7 @@ const saveNoteBtnEl = document.querySelector("#saveBtn");
 const deleteNoteBtnEl = document.querySelector("#deleteBtn");
 const dismissAlertBtnEl = document.querySelector(".dismiss_btn");
 
-window.addEventListener("load", renderSavedNotes);
+renderSavedNotes();
 newNoteBtnEl.addEventListener("click", createNewNote);
 saveNoteBtnEl.addEventListener("click", saveNote);
 deleteNoteBtnEl.addEventListener("click", deleteNote);
@@ -19,47 +19,42 @@ function createNewNote() {
   document
     .querySelectorAll(".note_card")
     .forEach((card) => card.classList.remove("note_selected"));
-    const noteTitle = titleInputField.value;
-  let noteContent = contentInputField.value;  
-  const myNote = {
-    noteTitle: noteTitle,
-    noteBody: noteContent,
+  const noteTitle = titleInputField.value;
+  const noteContent = contentInputField.value;  
+  addNewNoteToList(noteTitle, noteContent);
+  renderSavedNotes();
+  clearInputField();
+  saveNotesInLocalStorage();
+}
+
+function addNewNoteToList(title, content) {
+    const myNote = {
+    noteTitle: title,
+    noteBody: content,
     lastUpdated: new Date().toLocaleString(),
     id: getCryptedId(),
   };
   savedNotes.push(myNote);
-  renderSavedNotes();
-  clearInputField();
-  saveNotesInLS();
 }
 
 function saveNote() {
-  getData();
-  let sortedNotes = savedNotes.reverse();
-  notesContainer.innerHTML = "";
-  sortedNotes.forEach((note) => {
-    getNoteCardTemplate(note);
-  });
-  savedNotes = sortedNotes.reverse();
-  clearInputField();
-  saveNotesInLS();
-}
-
-function getData() {
   const noteTitle = titleInputField.value;
-  let noteContent = contentInputField.value;  
+  const noteContent = contentInputField.value;  
   if (noteTitle === "" || noteContent === "") {
     renderToastMessage();
     return;
   }
-  const myNote = {
-    noteTitle: noteTitle,
-    noteBody: noteContent,
-    lastUpdated: new Date().toLocaleString(),
-    id: getCryptedId(),
-  };
-  savedNotes.push(myNote);
+  addNewNoteToList(noteTitle, noteContent);
+  let sortedNotes = savedNotes.reverse();
+  notesContainer.innerHTML = "";
+  sortedNotes.forEach((note) => {
+    renderNoteCardTemplate(note);
+  });
+  savedNotes = sortedNotes.reverse();
+  clearInputField();
+  saveNotesInLocalStorage();
 }
+
 
 function editNote(noteToEdit, clickedCard) {
   document
@@ -80,25 +75,7 @@ function editNote(noteToEdit, clickedCard) {
   savedNotes = newArray;
 }
 
-function deleteNote() {
-  const noteToDelete = document.querySelector(".note_selected");
-  noteToDelete.remove();
-  const noteToDeleteTitle = titleInputField.value;
-  updateLS(noteToDeleteTitle);
-  clearInputField();
-}
-
-function renderSavedNotes() {
-  if (getNotesFromLS() !== null) {
-    savedNotes = getNotesFromLS();
-    notesContainer.innerHTML = "";
-    let sortedSavedNotes = savedNotes.reverse();
-    sortedSavedNotes.forEach((note) => getNoteCardTemplate(note));
-    savedNotes.reverse();
-  }
-}
-
-function getNoteCardTemplate(oneNote) {
+function renderNoteCardTemplate(oneNote) {
   const noteCard = document.createElement("div");
   noteCard.classList.add("note_card");
   noteCard.addEventListener("click", () => {
@@ -121,32 +98,13 @@ function getNoteCardTemplate(oneNote) {
 }
 
 function changeFormat(content) {
-  let formattedContent = content.replace(/\n/g, ' ');
+  const formattedContent = content.replace(/\n/g, ' ');
   return formattedContent;
 }
 
 function clearInputField() {
   titleInputField.value = "";
   contentInputField.value = "";
-}
-
-function saveNotesInLS() {
-  let notesInLocalStorage = localStorage.setItem(
-    "savedNotes",
-    JSON.stringify(savedNotes)
-  );
-  return notesInLocalStorage;
-}
-
-function getNotesFromLS() {
-  let savedNotes = JSON.parse(localStorage.getItem("savedNotes"));
-  return savedNotes;
-}
-
-function updateLS(title) {
-  let updatedArray = savedNotes.filter((note) => note.noteTitle !== title);
-  savedNotes = updatedArray;
-  saveNotesInLS();
 }
 
 function renderToastMessage() {

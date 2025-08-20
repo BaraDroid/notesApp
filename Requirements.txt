@@ -1,6 +1,7 @@
 Handy Ansicht:
     flex-direction: column
 
+ReadMe:
 Titel als input-Feld, content als text-area
 Speichern und Löschen erzeugen Toastnachricht, falls Notiz leer
 Speichern bestehender Nachricht auch ohne Veränderungen schiebt sie nach vorne
@@ -16,4 +17,4 @@ Karte einer Notiz hat hover Effekt, welcher bleibt bestehen, falls Notiz ausgew�
 lastUpdated ist ein timestamp mit datum und Uhrzeit bis in die Sekunden
 Änderung an der primary-color ändert auch hover Effekt
 box-shadow in grey-scale
-jestli mi to napis <p>
+jestli mi to napis <p> - nenapise, nevim proc, ale proste to nedela problem, zatimco u F. jo

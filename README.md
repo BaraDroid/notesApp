@@ -13,7 +13,8 @@ Notes are saved in **LocalStorage** and organized chronologically with the lates
   - Hover effect highlights selected note and adapts to the primary color  
 
 - **UI & Storage**  
-  - Notes are stored persistently in LocalStorage  
+  - Notes are stored persistently in LocalStorage
+  - Notes have crypto secured id
 
 ## 🛠️ Tech Stack
 - HTML, CSS, JavaScript (no frameworks)
